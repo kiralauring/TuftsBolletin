@@ -21,6 +21,10 @@ var sortTodEvents = [];
 var sortTomEvents = [];
 
 app.use(bodyparser.urlencoded({extended:true}));
+app.set('view engine', 'pug'); // Tell express to use jade for templating
+app.use(express.static(__dirname + '/public')); // Where I am storing my static content (pictures of heroes, stylesheets, and template files)
+
+
 app.get("/",function(request,response){
         for(var i = 0; i < orgs.length; i++){
                 needle.get("https://graph.facebook.com/v2.8/" + orgs[i] + "/events?access_token=1811986875725516%7C5795c6703e4db096806ef20f81de9fd0&__mref=message_bubble", function(error, response) {
@@ -37,7 +41,6 @@ app.get("/",function(request,response){
                         for(var k = 0; k < todEvents.length; k++){
                                 var eventTime = todEvents[k].start_time.substring(11,13) + todEvents[k].start_time.substring(14,16);
                                 var eventTimeTemp = parseInt(eventTime);
-                                //console.log(eventTimeTemp);
                                 var eventObj = {"time": eventTimeTemp,"event": todEvents[k]}
                                 sortTodEvents[k] = eventObj;
                                 sortTodEvents.sort(function(a, b) {
@@ -48,15 +51,38 @@ app.get("/",function(request,response){
                         for(var k = 0; k < tomEvents.length; k++){
                                 var eventTime = tomEvents[k].start_time.substring(11,13) + tomEvents[k].start_time.substring(14,16);
                                 var eventTimeTemp = parseInt(eventTime);
-                                //console.log(eventTimeTemp);
                                 var eventObj = {"time": eventTimeTemp,"event": tomEvents[k]}
                                 sortTomEvents[k] = eventObj;
                                 sortTomEvents.sort(function(a, b) {
                                         return a.time - b.time;
                                 });
                         }
+
+                        for(var m = 0; m < sortTodEvents.length; m++){
+                                sortTodEvents[m].event.description = sortTodEvents[m].event.description.slice(0,85);
+                                sortTodEvents[m].event.description += "..."
+                        }
+
+                        for(var q = 0; q < sortTomEvents.length; q++){
+                                sortTomEvents[q].event.description = sortTomEvents[q].event.description.slice(0,85);
+                                sortTomEvents[q].event.description += "..."
+                                console.log(sortTomEvents[q].event.description);
+                        }
+                        //console.log("sort tom events is ")
+                        //console.log(sortTomEvents);
                 });
+
+
         }
+        setInterval(function(){
+                //console.log(sortTodEvents);
+                response.render('layoutclndr', { // format for providing data to template is templateVariable: nodeVariable
+                            todayEvents: sortTodEvents,
+                            tomorrowEvents: sortTomEvents
+                });
+                return;
+                response.end();
+        }, 4000);
 })
 app.post("/derp",function(request,response){
         console.log(request.body);

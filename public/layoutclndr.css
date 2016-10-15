@@ -6,14 +6,16 @@ body {
 }
 #topbar{
       text-align: center;
-      height: 25%;
+      font-family: 'Lato',sans-serif;
+      font-size: 20pt;
 }
-#title{
-      text-align: left;
-      height: 25%;
-      color: white;
+.title{
+        font-family: 'Lato',sans-serif;
+        text-align: left;
+        color: white;
 }
 
+/*
 #event{
       text-align: center;
       background-color: #D2D2DB;
@@ -29,10 +31,19 @@ body {
       background-color: rgba(0,0,0,0);
 
 }
+*/
+
+.event{
+        font-family: 'Lato',sans-serif;
+        margin-bottom: 5px;
+        width: 500px;
+        height: 200px;
+}
 #timeContainer{
       /*padding-top: 23%;*/
+      padding-left: 10px;
       float: left;
-      width: 25%;
+      width: 23%;
       color: #3A3335;
       height: 100%;
       top: 50%;
@@ -42,14 +53,17 @@ body {
 
 }
 #eventInfoContainer{
+
+      padding-left: 10px;
       height: 100%;
       float: right;
-      width: 75%;
-      background: rgba(210,210,219,0.5);
+      width: 73%;
+      background: rgba(210,210,219,0.6);
       border-radius: 1px 25px 25px 1px;
 }
 #name{
       width:100%;
+      font-weight: 300i;
 }
 #host{
       width: 100%;
@@ -57,6 +71,6 @@ body {
 #description{
       width: 100%;
 }
-#rsvp{
-      width: 100%;
+a{
+      color: #6B2413;
 }

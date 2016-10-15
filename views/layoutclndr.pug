@@ -1,23 +1,38 @@
+//- console.log(todayEvents)
 doctype html(lang="en")
 link(href="layoutclndr.css", rel="stylesheet")
 
 head
       title Tufts Event Calendar
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400" rel="stylesheet">
 body
 #topbar
       h1 Tufts Calendar
-#title
-      h1 Today
-#event
-      #timeContainer
-            p= time
-      #eventInfoContainer
-            #name
-                  h1= eventName
-            #host
-                  p Hosted by: #{host}
-            #description
-                  p= des
-            #rsvp
-                  a(href= facebookLink) R.S.V.P
+.title
+      h2 Today
+- for (var i = 0; i < todayEvents.length; i++)
+        //- console.log(todayEvents[0].name)
+        .event
+              #timeContainer
+                    h3= todayEvents[i].time
+              #eventInfoContainer
+                    #name
+                          h1= todayEvents[i].event.name
+                    #description
+                          p= todayEvents[i].event.description
+                    #rsvp
+                          a(href= "https://facebook.com/events/"+todayEvents[i].event.id) view facebook event
+
+.title
+        h2 Tomorrow
+- for (var i = 0; i < tomorrowEvents.length; i++)
+        .event
+              #timeContainer
+                    h3= tomorrowEvents[i].time
+              #eventInfoContainer
+                    #name
+                          h1= tomorrowEvents[i].event.name
+                    #description
+                          p= tomorrowEvents[i].event.description
+                    #rsvp
+                          a(href= "https://facebook.com/events/"+tomorrowEvents[i].event.id) view facebook event
