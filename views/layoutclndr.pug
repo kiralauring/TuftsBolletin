@@ -3,18 +3,18 @@ doctype html(lang="en")
 link(href="layoutclndr.css", rel="stylesheet")
 
 head
-      title Tufts Event Calendar
+      title Tufts 'Bolletin
       <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400" rel="stylesheet">
 body
 #topbar
-      h1 Tufts Calendar
+      h1 Tufts 'Bolletin
 .title
-      h2 Today
+      h2 Today #{todDate} : On this day in #{todayFactYear}, #{todayFacts}
 - for (var i = 0; i < todayEvents.length; i++)
         //- console.log(todayEvents[0].name)
         .event
               #timeContainer
-                    h3= todayEvents[i].time
+                    h2= todayEvents[i].time
               #eventInfoContainer
                     #name
                           h1= todayEvents[i].event.name
@@ -24,11 +24,11 @@ body
                           a(href= "https://facebook.com/events/"+todayEvents[i].event.id) view facebook event
 
 .title
-        h2 Tomorrow
+        h2 Tomorrow #{tomDate} : On this day in #{tomorrowFactYear}, #{tomorrowFacts}
 - for (var i = 0; i < tomorrowEvents.length; i++)
         .event
               #timeContainer
-                    h3= tomorrowEvents[i].time
+                    h2= tomorrowEvents[i].time
               #eventInfoContainer
                     #name
                           h1= tomorrowEvents[i].event.name

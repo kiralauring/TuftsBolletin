@@ -4,6 +4,7 @@
                 "express":"latest",
                 "body-parser":"latest",
                 "pug":"latest",
-                "needle":"latest"
+                "needle":"latest",
+                "xml2js":"latest"
         }
 }
