@@ -123,7 +123,5 @@ app.get("/",function(request,response){
         }, 4000);
 })
 
-app.set("port",(5000));
-app.listen(app.get("port"),function(){
-
-})
+var PORT = process.env.port || 5000;
+app.listen(PORT);
