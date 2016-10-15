@@ -62,7 +62,9 @@ app.get("/",function(request,response){
                         for(var k = 0; k < todEvents.length; k++){
                                 var eventTime = todEvents[k].start_time.substring(11,13) + todEvents[k].start_time.substring(14,16);
                                 var eventTimeTemp = parseInt(eventTime);
-                                var eventObj = {"time": eventTimeTemp,"event": todEvents[k]}
+                                var endTime = todEvents[k].end_time.substring(11,13) + todEvents[k].end_time.substring(14,16);
+                                var endTimeTemp = parseInt(endTime);
+                                var eventObj = {"time": eventTimeTemp,"event": todEvents[k],"end": endTimeTemp}
                                 sortTodEvents[k] = eventObj;
                                 sortTodEvents.sort(function(a, b) {
                                         return a.time - b.time;
@@ -72,7 +74,9 @@ app.get("/",function(request,response){
                         for(var k = 0; k < tomEvents.length; k++){
                                 var eventTime = tomEvents[k].start_time.substring(11,13) + tomEvents[k].start_time.substring(14,16);
                                 var eventTimeTemp = parseInt(eventTime);
-                                var eventObj = {"time": eventTimeTemp,"event": tomEvents[k]}
+                                var endTime = tomEvents[k].end_time.substring(11,13) + tomEvents[k].end_time.substring(14,16);
+                                var endTimeTemp = parseInt(endTime);
+                                var eventObj = {"time": eventTimeTemp,"event": tomEvents[k], "end": endTimeTemp}
                                 sortTomEvents[k] = eventObj;
                                 sortTomEvents.sort(function(a, b) {
                                         return a.time - b.time;
@@ -94,12 +98,23 @@ app.get("/",function(request,response){
                                         var hourTemp = sortTodEvents[r].time.toString().substring(0,2);
                                         var minuteTemp = sortTodEvents[r].time.toString().substring(2,4);
                                 }
-                                else {
+                                else{
                                         var hourTemp = sortTodEvents[r].time.toString().substring(0,1)
                                         var minuteTemp = sortTodEvents[r].time.toString().substring(1,3);
                                 }
+
+                                if(sortTodEvents[r].end >= 1000){
+                                        var ehourTemp = sortTodEvents[r].end.toString().substring(0,2);
+                                        var eminuteTemp = sortTodEvents[r].end.toString().substring(2,4);
+                                }
+                                else{
+                                        var ehourTemp = sortTodEvents[r].end.toString().substring(0,1)
+                                        var eminuteTemp = sortTodEvents[r].end.toString().substring(1,3);
+                                }
                                 var fixedTime = hourTemp + ":" + minuteTemp;
+                                var efixedTime = ehourTemp + ":" + eminuteTemp;
                                 sortTodEvents[r].time = fixedTime;
+                                sortTodEvents[r].end = efixedTime;
                         }
 
                         for(var s = 0; s < sortTomEvents.length; s++){
@@ -107,13 +122,25 @@ app.get("/",function(request,response){
                                         var hourTemp = sortTomEvents[s].time.toString().substring(0,2);
                                         var minuteTemp = sortTomEvents[s].time.toString().substring(2,4);
                                 }
-                                else {
+                                else{
                                         var hourTemp = sortTomEvents[s].time.toString().substring(0,1)
                                         var minuteTemp = sortTomEvents[s].time.toString().substring(1,3);
                                 }
+
+                                if(sortTomEvents[s].end >= 1000){
+                                        var ehourTemp = sortTomEvents[s].end.toString().substring(0,2);
+                                        var eminuteTemp = sortTomEvents[s].end.toString().substring(2,4);
+                                }
+                                else{
+                                        var ehourTemp = sortTomEvents[s].end.toString().substring(0,1)
+                                        var eminuteTemp = sortTomEvents[s].end.toString().substring(1,3);
+                                }
                                 var fixedTime = hourTemp + ":" + minuteTemp;
+                                var efixedTime = ehourTemp + ":" + eminuteTemp;
                                 sortTomEvents[s].time = fixedTime;
+                                sortTomEvents[s].end = efixedTime;
                         }
+
                 });
 
 

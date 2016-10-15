@@ -14,7 +14,7 @@ body
         //- console.log(todayEvents[0].name)
         .event
               #timeContainer
-                    h2= todayEvents[i].time
+                    h2= todayEvents[i].time + " - " + todayEvents[i].end
               #eventInfoContainer
                     #name
                           h1= todayEvents[i].event.name
@@ -28,7 +28,7 @@ body
 - for (var i = 0; i < tomorrowEvents.length; i++)
         .event
               #timeContainer
-                    h2= tomorrowEvents[i].time
+                    h2= tomorrowEvents[i].time + " - " + tomorrowEvents[i].end
               #eventInfoContainer
                     #name
                           h1= tomorrowEvents[i].event.name
