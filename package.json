@@ -1,0 +1,7 @@
+{
+        "name":"TuftsClndr",
+        "dependencies":{
+                "express":"latest",
+                "body-parser":"latest"
+        }
+}
