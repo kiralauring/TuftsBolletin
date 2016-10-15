@@ -123,5 +123,4 @@ app.get("/",function(request,response){
         }, 4000);
 })
 
-var PORT = process.env.port || 5000;
-app.listen(PORT);
+app.listen(process.env.port || 5000);
