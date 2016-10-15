@@ -1,0 +1,62 @@
+body {
+      /*background-color: #97C9C2;*/
+            /*background: rgba(210,210,219,0.5)*/
+            background-image: url("packardave.JPG");
+            background-size: cover;
+}
+#topbar{
+      text-align: center;
+      height: 25%;
+}
+#title{
+      text-align: left;
+      height: 25%;
+      color: white;
+}
+
+#event{
+      text-align: center;
+      background-color: #D2D2DB;
+      position:absolute;
+      width: 500px;
+      height: 200px;
+      z-index: 15;
+      top: 25%;
+      left: 50%;
+      margin: -100px 0 0 -150px;
+      padding-bottom: 2%;
+      font-family: 'Roboto', sans-serif;
+      background-color: rgba(0,0,0,0);
+
+}
+#timeContainer{
+      /*padding-top: 23%;*/
+      float: left;
+      width: 25%;
+      color: #3A3335;
+      height: 100%;
+      top: 50%;
+      background: rgba(210,210,219,0.75);
+      border-radius: 25px 1px 1px 25px;
+
+
+}
+#eventInfoContainer{
+      height: 100%;
+      float: right;
+      width: 75%;
+      background: rgba(210,210,219,0.5);
+      border-radius: 1px 25px 25px 1px;
+}
+#name{
+      width:100%;
+}
+#host{
+      width: 100%;
+}
+#description{
+      width: 100%;
+}
+#rsvp{
+      width: 100%;
+}

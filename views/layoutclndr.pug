@@ -1,0 +1,23 @@
+doctype html(lang="en")
+link(href="layoutclndr.css", rel="stylesheet")
+
+head
+      title Tufts Event Calendar
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+body
+#topbar
+      h1 Tufts Calendar
+#title
+      h1 Today
+#event
+      #timeContainer
+            p= time
+      #eventInfoContainer
+            #name
+                  h1= eventName
+            #host
+                  p Hosted by: #{host}
+            #description
+                  p= des
+            #rsvp
+                  a(href= facebookLink) R.S.V.P

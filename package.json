@@ -2,6 +2,7 @@
         "name":"TuftsClndr",
         "dependencies":{
                 "express":"latest",
-                "body-parser":"latest"
+                "body-parser":"latest",
+                "pug":"latest"
         }
 }
