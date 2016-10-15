@@ -5,6 +5,7 @@
                 "body-parser":"latest",
                 "pug":"latest",
                 "needle":"latest",
-                "xml2js":"latest"
+                "xml2js":"latest",
+                "forever":"latest"
         }
 }
