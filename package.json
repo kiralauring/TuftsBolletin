@@ -3,6 +3,7 @@
         "dependencies":{
                 "express":"latest",
                 "body-parser":"latest",
-                "pug":"latest"
+                "pug":"latest",
+                "needle":"latest"
         }
 }
