@@ -32,7 +32,6 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.set('view engine', 'pug'); // Tell express to use jade for templating
 app.use(express.static(__dirname + '/public')); // Where I am storing my static content (pictures of heroes, stylesheets, and template files)
 
-
 app.get("/",function(request,response){
         var randEvent = needle.get("http://api.hiztory.org/date/event/10/15/api.xml", function(error, response) {
                 if (!error && response.statusCode == 200){
@@ -91,17 +90,29 @@ app.get("/",function(request,response){
                         }
 
                         for(var r = 0; r < sortTodEvents.length; r++){
-                                var hourTemp = sortTodEvents[r].time.toString().substring(0,2);
-                                var minuteTemp = sortTodEvents[r].time.toString().substring(2,4);
+                                if(sortTodEvents[r].time >= 1000){
+                                        var hourTemp = sortTodEvents[r].time.toString().substring(0,2);
+                                        var minuteTemp = sortTodEvents[r].time.toString().substring(2,4);
+                                }
+                                else {
+                                        var hourTemp = sortTodEvents[r].time.toString().substring(0,1)
+                                        var minuteTemp = sortTodEvents[r].time.toString().substring(1,3);
+                                }
                                 var fixedTime = hourTemp + ":" + minuteTemp;
                                 sortTodEvents[r].time = fixedTime;
                         }
 
-                        for(var r = 0; r < sortTomEvents.length; r++){
-                                var hourTemp = sortTomEvents[r].time.toString().substring(0,2);
-                                var minuteTemp = sortTomEvents[r].time.toString().substring(2,4);
+                        for(var s = 0; s < sortTomEvents.length; s++){
+                                if(sortTomEvents[s].time >= 1000){
+                                        var hourTemp = sortTomEvents[s].time.toString().substring(0,2);
+                                        var minuteTemp = sortTomEvents[s].time.toString().substring(2,4);
+                                }
+                                else {
+                                        var hourTemp = sortTomEvents[s].time.toString().substring(0,1)
+                                        var minuteTemp = sortTomEvents[s].time.toString().substring(1,3);
+                                }
                                 var fixedTime = hourTemp + ":" + minuteTemp;
-                                sortTomEvents[r].time = fixedTime;
+                                sortTomEvents[s].time = fixedTime;
                         }
                 });
 
